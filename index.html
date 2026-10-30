@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ComfyTheatre</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="/src/style.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/hls.js/dist/hls.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ovenplayer/dist/ovenplayer.js"></script>
+  </head>
+  <body class="font-sans antialiased bg-gray-950 text-white">
+    <div class="flex flex-col min-h-screen">
+      <div>
+        <nav class="relative flex items-stretch bg-gray-900 text-gray-100 text-lg shadow h-16 z-50">
+          <div class="flex justify-between h-full w-full xl:w-auto">
+              <h1 class="flex items-center text-xl font-bold tracking-tighter select-none pointer-events-none px-4">
+                [thetheatre]
+              </h1>
+          </div>
+        </nav>
+      </div>
+      <main class="flex-grow">
+        <div class="w-full">
+          <div class="stream-container flex flex-col lg:grid lg:grid-cols-4">
+            <div class="group flex flex-col lg:col-span-3">
+              <div class="aspect-video">
+                <div>
+                  <div id="video"></div>
+                </div>
+              </div>
+            </div>
+            <div class="relative flex flex-col flex-grow min-h-[500px] h-full lg:min-h-0 lg:col-span-1">
+              <script id="cid0020000108958775450" data-cfasync="false" src="https://st.chatango.com/js/gz/emb.js" class="absolute inset-0 w-full h-full min-h-[500px]" style="width: 100%; height: 100%;" async>
+                {
+                  "handle": "theatremovies",
+                  "arch": "js",
+                  "styles":{
+                    "a": "0b0809",
+                    "b": 100,
+                    "c": "FFFFFF",
+                    "d": "FFFFFF",
+                    "e": "555555",
+                    "g": "ffffff",
+                    "h": "555555",
+                    "j": "ffffff",
+                    "k": "e0e0e0",
+                    "l": "444444",
+                    "m": "444444",
+                    "n": "FFFFFF",
+                    "p": "12",
+                    "q": "0b0809",
+                    "r": 100,
+                    "t": 0,
+                    "ab": false,
+                    "surl": 0,
+                    "allowpm": 0,
+                    "fwtickm": 0
+                  }
+                }
+              </script>
+            </div>
+          </div>
+        </div>
+      </main>
+      <footer class="w-full">
+        <img src="https://d2d9aitdo93tgs.cloudfront.net/1437/ComfyTheatreSeats_1.jpg" class="w-full select-none pointer-events-none" alt="Comfy-tan sitting in a theatre on comfy seats">
+      </footer>
+    </div>
+    <script>
+      const player = OvenPlayer.create('video', {
+        sources: [
+          {
+            label: 'WebRTC',
+            type: 'webrtc',
+            file: `wss://eu.stream.comfytheatre.co.uk:3334/live/films/abr`
+          },
+          {
+            label: 'LLHLS',
+            type: 'hls',
+            file: `https://eu.stream.comfytheatre.co.uk:4433/live/films/llhls.m3u8`
+          },
+        ],
+        aspectRatio: null,
+        image: 'https://d2d9aitdo93tgs.cloudfront.net/1442/theatre_curtains.jpg'
+      });
+    </script>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
